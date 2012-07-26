@@ -1,0 +1,99 @@
+<!doctype html>
+<head>
+  <title>OPML to HTML List | jQuery Plugin</title>
+  <meta name="description" content="A jQuery Plugin to convert OPML XMLdocuments to HTML Lists" />
+  <meta name="keywords" content="OPML, jQuery, HTML, List, UL, LI, OL" />
+  <meta name="author" content="Alistair MacDonald at SignedOn, Inc. (@signedoninc)" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+
+  <h1>OPML to HTML List | jQuery Plugin</h1>
+
+  <p>"OPML to List" is a jQuery Plugin to convert OPML XML documents to HTML
+    Lists.</p>
+
+  <span>Author: Alistair MacDonald at <a href="http://signedon.com">SignedOn</a>, Inc. (<a href="http://twitter.com/signedoninc">@SignedOnInc</a>)</span>
+
+  <h2>Example Code</h2>
+
+  <p>The following code demonstrates how to use the OPML to List plugin. The
+    jQuery plugin does not handle the AJAX for the user, as the user's AJAX
+    requests may be very specific to the requirements of the application. For
+    example: one user may want to used cached request, another may not. The
+    choice was made not to clutter the jQuery plugin with options.</p>
+
+  <pre>
+    $(function(){
+
+      function callback(){
+        //console.log( 'OPML to List Finished!' );
+      }
+
+      function error(e){
+        //console.error( 'AJAX ERROR!' );
+      }
+
+      function success(e){
+        $('#opml-output').opmltolist(e, callback);
+      };
+
+      $.ajax({
+          //url      : 'playlist.opml'
+          //url      : 'specification.opml'
+          //url      : 'publications.opml'
+          url       : 'specification.opml'
+        , dataType  : 'xml'
+        , cache     : false
+        , success   : success
+        , error     : error
+      });
+
+    });
+  </pre>
+
+  <h3>Example HTML Output</h3>
+
+  <p>The following HTML was generated using the code above. An AJAX request is
+    made for the OPML Document, which is an XML Document. Then the resulting
+    data is parsed by the jQuery plugin and returned as an HTML List.</p>
+
+  <!-- This is where the HTML output will be rendered by the jQuery plugin. -->
+  <ul id="opml-output"></ul>
+
+  <!-- Includes -->
+  <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="jquery.opmltolist.js"></script>
+
+  <!-- Script Example -->
+  <script type="text/javascript">
+
+    $(function(){
+
+      function callback(){
+        //console.log( 'OPML to List Finished!' );
+      }
+
+      function error(e){
+        //console.error( 'AJAX ERROR!' );
+      }
+
+      function success(e){
+        $('#opml-output').opmltolist(e, callback);
+      };
+
+      $.ajax({
+          //url      : 'playlist.opml'
+          //url      : 'specification.opml'
+          //url      : 'publications.opml'
+          url       : 'specification.opml'
+        , dataType  : 'xml'
+        , cache     : false
+        , success   : success
+        , error     : error
+      });
+
+    });
+
+  </script>
+</body>
